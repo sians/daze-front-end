@@ -38,15 +38,15 @@ const LoginPage = () => {
                     userLogin({
                       variables: { email: email.current.value, password: password.current.value}
                     }).then(( { data : { userLogin : { credentials : {accessToken, uid, client} } } }) => {
-                        console.log(accessToken)
-                        console.log(uid)
-                        console.log(client)
+                        // console.log(accessToken)
+                        // console.log(uid)
+                        // console.log(client)
 
-                        //     if (accessToken) {
-                    //     localStorage.setItem("access-token", accessToken);
-                    //     localStorage.setItem("uid", uid);
-                    //     localStorage.setItem("client", client);
-                    //   }
+                      if (accessToken) {
+                        localStorage.setItem("access-token", accessToken);
+                        localStorage.setItem("uid", uid);
+                        localStorage.setItem("client", client);
+                      }
                     });
                   }}
                 >

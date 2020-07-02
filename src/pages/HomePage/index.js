@@ -17,8 +17,9 @@ const PHOTOS = gql`
 const HomePage = () => {
 
     const { loading, error, data } = useQuery(PHOTOS)
+    console.log(loading)
+    console.log(error)
     console.log(data)
-
 
     return (
         <div>

@@ -4,7 +4,8 @@ import { render } from 'react-dom';
 import './styles/main.scss'
 
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
+// import { gql } from 'apollo-boost';
+import gql from 'graphql-tag';
 
 import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
@@ -20,9 +21,21 @@ const LOGIN = gql`
   }
 `
 
+const ME = gql`
+  query me {
+    me {
+      id
+      username
+    }
+  }
+`
+
 const App = () => {
-  const [ login ] = useMutation(LOGIN)
-  
+  // const [ loading, error, data ] = useQuery(ME);
+
+
+  console.log(localStorage)
+  // console.log(me)
 
   return (
         <div>

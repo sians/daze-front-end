@@ -15,13 +15,17 @@ const cache = new InMemoryCache();
 const client = new ApolloClient({
   cache,
   link: new HttpLink({
-    uri: 'http://localhost:3000/auth',
+    uri: 'http://localhost:3000/graphql',
     headers: {
       accessToken: localStorage.getItem('access-token'),
       client: localStorage.getItem('client'),
       uid: localStorage.getItem('uid')
     },
   }),
+  // fetchOptions: {
+  //   mode: 'no-cors'
+  // }
+  credentials: true
 });
 
 cache.writeData({
@@ -29,6 +33,9 @@ cache.writeData({
     isLoggedIn: !!localStorage.getItem('access-token'),
   },
 });
+
+console.log("wahoo")
+console.log(localStorage)
 
 
 // const IsLoggedIn = () => {
