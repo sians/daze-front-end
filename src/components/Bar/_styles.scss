@@ -1,0 +1,25 @@
+.bottom-nav {
+    height: 60px;
+    width: 100vw;
+    // background-color: pink;
+    border-top: 5px solid black;
+    .nav-list {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+.menu-icon {
+    height: 100%;
+    width: 30px;
+    // filter: invert(100%) sepia(31%) saturate(2%) hue-rotate(31deg) brightness(110%) contrast(100%);
+    margin-right: 10px;
+    padding: 30px 40px;
+    &.active {
+        transition: all 1s;
+        // filter: brightness(0) saturate(100%) invert(17%) sepia(96%) saturate(3881%) hue-rotate(337deg) brightness(94%) contrast(105%);
+        // background-color: rgba($pink, 0.1);
+
+        background-color: rgba(black, 0.1);
+    }
+}

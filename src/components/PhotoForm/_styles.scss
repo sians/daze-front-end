@@ -1,0 +1,52 @@
+.photo-form {
+    font-family: 'Cutive Mono', monospace;
+    display: flex;
+    align-items: center;
+
+    .file-upload {
+        background-color: rgba(black, 0.1);
+        height: 350px;
+        width: 350px;
+        margin-right: 40px;
+        .upload-icon {
+            height: 100px;
+            width: 100px;
+            filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(357deg) brightness(107%) contrast(110%);
+        }
+        section div {
+            display: flex;
+            height: 350px;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    form {
+        .field {
+            padding: 25px 10px;
+            input {
+                padding: 10px 0px 5px;
+                width: 300px;
+                border: none;
+                border-bottom: 3px solid rgba(black, 0.1);
+                outline: none;
+                    
+                &:focus {
+                    // border-bottom: 3px solid rgba(black, 1);
+                    color: $pink;
+                    border-bottom: 3px solid rgba($pink, 1);
+                    background-color: transparent;
+                    // box-shadow: 
+                    //     0 0 50px #fff,
+                    //     0px 10px 10px rgba($pink, 0.3),
+                    //     10px 0 20px #fff;     
+    
+                    &::placeholder {
+                        font-style: italic;
+                        color: rgba($pink, 0.6);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -22,10 +22,6 @@ const client = new ApolloClient({
       uid: localStorage.getItem('uid')
     },
   }),
-  // fetchOptions: {
-  //   mode: 'no-cors'
-  // }
-  credentials: true
 });
 
 cache.writeData({
