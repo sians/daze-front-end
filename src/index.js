@@ -2,6 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { ApolloClient } from 'apollo-client';
+import { ApolloLink } from 'apollo-link';
+import { BatchHttpLink } from 'apollo-link-batch-http';
+import { createUploadLink } from 'apollo-upload-client';
+
+
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloProvider, useQuery } from '@apollo/react-hooks';
@@ -11,17 +16,31 @@ import gql from 'graphql-tag';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+
+// const oldLink = new HttpLink({
+//   uri: 'http://localhost:3000/graphql',
+//   headers: {
+//     accessToken: localStorage.getItem('access-token'),
+//     client: localStorage.getItem('client'),
+//     uid: localStorage.getItem('uid')
+//   },
+// })
+
+const options = {
+  uri: '/graphql',
+  credentials: 'include'
+}
+
+const httpLink = ApolloLink.split(
+  operation => operation.getContext().hasUpload,
+  createUploadLink(options),
+  new HttpLink(options)
+)
+
 const cache = new InMemoryCache();
 const client = new ApolloClient({
-  cache,
-  link: new HttpLink({
-    uri: 'http://localhost:3000/graphql',
-    headers: {
-      accessToken: localStorage.getItem('access-token'),
-      client: localStorage.getItem('client'),
-      uid: localStorage.getItem('uid')
-    },
-  }),
+  cache: cache,
+  link: httpLink
 });
 
 cache.writeData({

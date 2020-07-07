@@ -1,12 +1,38 @@
 import React, { useCallback } from 'react';
+import { Mutation } from 'react-apollo';
 import Dropzone from 'react-dropzone';
+import gql from 'graphql-tag';
 
 import IconButton from '../IconButton';
 import uploadIcon from '../../assets/icons/upload.svg'
 
 
+const uploadPhotoMutation = gql`
+  {
+    photos {
+      id
+      description
+    } 
+  }
+`
+
+
+
 const FileUpload = () => (
-    <Dropzone onDrop={() => console.log("file dropped!")} >
+  <Mutation
+    mutation={uploadPhotoMutation}
+    context={{ hasUpload: true }}
+    onCompleted={data => {
+      console.log("completed")
+      console.log(data)
+    }}
+  >
+    {(uploadPhotoMutation, { loading }) => (
+      <Dropzone 
+        onDrop={(files) => uploadPhoto({variables: {image: files[0]}})}
+        accept="image/*"
+        multiple={false}
+      >
 
       {({getRootProps, getInputProps}) => (
           <section>
@@ -17,6 +43,10 @@ const FileUpload = () => (
           </section>
         )}
 
-    </Dropzone>
+      </Dropzone>
+    )}
+
+
+  </Mutation>
 );
 export default FileUpload;
