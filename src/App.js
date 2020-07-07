@@ -1,14 +1,14 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React, { useState } from 'react';
 
 import './styles/main.scss'
 
-import { useQuery, useMutation } from '@apollo/react-hooks';
 // import { gql } from 'apollo-boost';
 import gql from 'graphql-tag';
 
-import LoginPage from './pages/LoginPage'
-import HomePage from './pages/HomePage'
+import { BrowserRouter } from 'react-router-dom';
+import Router from './navigation/Router';
+
+import Bar from './components/Bar';
 
 const LOGIN = gql`
   mutation LoginMutation(
@@ -32,17 +32,21 @@ const ME = gql`
 
 const App = () => {
   // const [ loading, error, data ] = useQuery(ME);
-
+  const [pathName, setPathName] = useState('')
+  const handleRoutePathName = (pathName) => {
+    setPathName(pathName)
+  }
 
   console.log(localStorage)
   // console.log(me)
 
   return (
-        <div>
-          <LoginPage />
-          <HomePage />
-          <h2>Inside</h2>
-        </div>
+        <BrowserRouter>
+          <div className="app-content">
+            <Router />
+            <Bar />
+          </div>
+        </BrowserRouter>
   );
 }
 

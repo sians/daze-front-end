@@ -1,11 +1,13 @@
 .bottom-nav {
-    height: 60px;
+    height: 90px;
     width: 100vw;
     // background-color: pink;
+    position: fixed;
+    bottom: 0px;
     border-top: 5px solid black;
     .nav-list {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
     }
 }
 

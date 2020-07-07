@@ -94,6 +94,13 @@ const PhotoForm = () => {
                     onChange={handleChangeLng}
                 />
             </div>
+
+            <div className='submit-field'>
+                <div className={`submit-btn ${title !== '' ? 'active' : ''}`}>
+                    <div>+</div>
+                </div>
+            </div>
+
         </form>
     </div>
   )

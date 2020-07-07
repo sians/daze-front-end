@@ -30,8 +30,7 @@ cache.writeData({
   },
 });
 
-console.log("wahoo")
-console.log(localStorage)
+
 
 
 // const IsLoggedIn = () => {

@@ -1,7 +1,7 @@
 .photo-form {
     font-family: 'Cutive Mono', monospace;
     display: flex;
-    align-items: center;
+    // align-items: center;
 
     .file-upload {
         background-color: rgba(black, 0.1);
@@ -22,8 +22,9 @@
     }
 
     form {
+        position: relative;
         .field {
-            padding: 25px 10px;
+            padding: 20px 10px;
             input {
                 padding: 10px 0px 5px;
                 width: 300px;
@@ -45,6 +46,28 @@
                         font-style: italic;
                         color: rgba($pink, 0.6);
                     }
+                }
+            }
+        }
+        .submit-field {
+            position: absolute;
+            right: 0px;
+            width: 90px;
+            .submit-btn {
+                margin-top: 20px;
+                font-size: 50px;
+                color: white;
+                background-color: rgba(black, 0.1);
+                width: 90px;
+                height: 90px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.5s;
+                &.active {
+                    background-color: $pink;
+                    transition: all 0.5s;
+                    cursor: pointer;
                 }
             }
         }

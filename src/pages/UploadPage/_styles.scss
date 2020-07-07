@@ -1,0 +1,12 @@
+.upload-page-container {
+    height: calc(100vh - 90px);
+    display: flex;
+    justify-content: center;
+    h2 {
+        margin: 100px 0px 60px;
+    }
+    .today {
+        color: $pink;
+    }    
+}
+
